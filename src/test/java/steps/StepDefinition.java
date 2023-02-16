@@ -41,6 +41,15 @@ public class StepDefinition {
         ajioPage.getAllowLocation().click();
     }
 
+    @Given("the user navigates to the homepage")
+    public void the_user_navigates_to_the_homepage() {
+        url= QaProps.getValue("url");
+        driver.get(url);
+        data = TestDataReader.getData(scenario.getName());
+        ajioPage = new AjioPage(driver);
+        ajioPage.getAllowLocation().click();
+    }
+
     @When("the user enter the product name")
     public void the_user_enter_the_product_name() {
         ajioPage.getSearchBar().sendKeys(data.get("SearchProduct"));
