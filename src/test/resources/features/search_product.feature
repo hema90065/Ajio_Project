@@ -1,6 +1,6 @@
 Feature: Search bar feature
 
-  @smoke
+
   Scenario: Verify that the user can able to search a product
     Given  the user navigates to the home page
     When the user enter the product name
