@@ -38,7 +38,6 @@ public class StepDefinition {
         driver.get(url);
         data = TestDataReader.getData(scenario.getName());
         ajioPage = new AjioPage(driver);
-        ajioPage.getAllowLocation().click();
     }
 
     @When("the user enter the product name")
