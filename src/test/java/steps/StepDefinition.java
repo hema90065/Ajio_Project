@@ -38,7 +38,7 @@ public class StepDefinition {
         driver.get(url);
         data = TestDataReader.getData(scenario.getName());
         ajioPage = new AjioPage(driver);
-        //ajioPage.getAllowLocation().click();
+        ajioPage.getAllowLocation().click();
     }
 
     @When("the user enter the product name")
@@ -97,7 +97,7 @@ public class StepDefinition {
     public void the_user_should_be_able_to_select_product_from_suggested_list() {
         List<WebElement> listofCategoriesDropdown = ajioPage.getListOfCategoriesDropdownAttachedToSearchBox();
         String selectesOption = listofCategoriesDropdown.get(8).getText();
-        listofCategoriesDropdown.get(4).click();
+        listofCategoriesDropdown.get(8).click();
         Assert.assertEquals(selectesOption,"Heels");
     }
 
@@ -114,5 +114,25 @@ public class StepDefinition {
     public void product_should_be_displayed_on_search_page() {
         String searchInfo = ajioPage.getSearchInfo().getText();
         Assert.assertEquals(searchInfo,"Kurti");
+    }
+
+
+    @When("the user enter the product {string}")
+    public void theUserEnterTheProduct(String arg0) {
+        ajioPage.getSearchBar().sendKeys(arg0);
+        ajioPage.getSearchBar().sendKeys(Keys.ENTER);
+    }
+
+
+    @Then("the product {string} should be displayed")
+    public void theProductShouldBeDisplayed(String arg0) {
+        HashMap<String,String> searchData=new HashMap<>();
+        searchData.put("Shoes","Footwear");
+        searchData.put("Jackets","Jackets");
+        searchData.put("Jeans","Jeans");
+
+        String searchInfo = ajioPage.getSearchInfo().getText();
+        Assert.assertEquals(searchInfo,searchData.get(arg0));
+
     }
 }

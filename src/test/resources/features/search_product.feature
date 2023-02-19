@@ -5,6 +5,17 @@ Feature: Search bar feature
     When the user enter the product name
     Then the product results should be displayed
 
+    Scenario Outline: Verify that the user can able to search a product
+      Given  the user navigates to the home page
+      When the user enter the product "<name>"
+      Then the product "<name>" should be displayed
+      Examples:
+        |  name   |
+        | Shoes   |
+        | Jackets |
+        | Jeans  |
+
+
   Scenario: Verify that the Ajio search box height is as per specification
     Given the user navigates to the home page
     Then search box height should be as per specification
@@ -24,10 +35,12 @@ Feature: Search bar feature
     Then the categories dropdown should be properly attached to the search box
 
 
+
   Scenario: Verify that the user is able to select an option from the suggested product or not
     Given the user navigates to the home page
     When the user click on search bar then suggested product list show
     Then the user should be able to select product from suggested list
+
 
   Scenario: Verify that when the user selects an option from the suggested product list the search result should be displayed on a search page
     Given the user navigates to the home page
@@ -35,10 +48,3 @@ Feature: Search bar feature
     When the user select an option from the suggested list
     Then product should be displayed on search page
 
-  Scenario: Verify that the user should be able to click on the Amazon search box or not
-
-  Scenario: Verify that boundry value for the Ajio search box
-
-  Scenario: Verify that the minimum length of the search query for the Ajio search box
-
-  Scenario: Verify that the maximum length of the search query for the Ajio search box
