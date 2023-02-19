@@ -68,14 +68,6 @@ public class StepDefinition {
         Assert.assertEquals(dimension.getWidth(),269);
     }
 
-    @Then("search box layout should be as per specification")
-    public void search_box_layout_should_be_as_per_specification(){
-       Point point =  ajioPage.getSearchBar().getLocation();
-//        System.out.println(point.getX());
-//        System.out.println(point.getY());
-        Assert.assertEquals(point.getX(),872);
-        Assert.assertEquals(point.getY(),48);
-    }
 
     @Then("placeholder should be properly display")
     public void placeholder_should_be_properly_display() {

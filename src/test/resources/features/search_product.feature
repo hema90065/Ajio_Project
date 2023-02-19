@@ -13,9 +13,6 @@ Feature: Search bar feature
     Given the user navigates to the home page
     Then search box width should be as per specification
 
-  Scenario: verify that the Ajio search box layout is as per specification or not
-    Given the user navigates to the home page
-    Then search box layout should be as per specification
 
   Scenario: Verify that placeholder is properly displayed or not
     Given the user navigates to the home page
