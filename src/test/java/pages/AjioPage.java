@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,35 +17,22 @@ public class AjioPage {
     }
 
 
-    public WebElement getSearchBar() {
-        return searchBar;
-    }
+
 
     @FindBy(xpath = "//input[@autocomplete=\"off\"]")
+    @Getter
     private WebElement searchBar;
 
-
-
-    public WebElement getAllowLocation() {
-        return allowLocation;
-    }
-
     @FindBy(xpath = "//button[@class=\"_1Pr1m wQxKC _2fXFm _2zWIL\"]")
+    @Getter
     private WebElement allowLocation;
 
-    public WebElement getSearchInfo() {
-        return searchInfo;
-    }
-
     @FindBy(xpath = "//div[@class=\"header2\"]")
+    @Getter
     private WebElement searchInfo;
 
-
-    public List<WebElement> getListOfCategoriesDropdownAttachedToSearchBox() {
-        return listOfCategoriesDropdownAttachedToSearchBox;
-    }
-
     @FindBy(xpath = "//ul[@class=\"rilrtl-list \"]//li")
+    @Getter
     private List<WebElement>  listOfCategoriesDropdownAttachedToSearchBox;
 
 
