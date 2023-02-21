@@ -9,9 +9,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import pages.AjioPage;
-import utils.BrowserManager;
-import utils.QaProps;
-import utils.TestDataReader;
+import utils.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -38,13 +36,24 @@ public class StepDefinition {
         driver.get(url);
         data = TestDataReader.getData(scenario.getName());
         ajioPage = new AjioPage(driver);
-    }
+        }
 
     @When("the user enter the product name")
     public void the_user_enter_the_product_name() {
         ajioPage.getSearchBar().sendKeys(data.get("SearchProduct"));
         ajioPage.getSearchBar().sendKeys(Keys.ENTER);
 
+    }
+
+    @When("the user click on search box")
+    public void theUserClickOnSearchBox() {
+        ClickUtil.click(driver,ajioPage.getSearchBar());
+
+    }
+
+    @Then("search box should be clickable")
+    public void searchBoxShouldBeClickable() {
+        WaitUtil.waitTillVisible(driver, ajioPage.getSearchBar());
     }
 
     @Then("the product results should be displayed")
@@ -97,7 +106,7 @@ public class StepDefinition {
         List<WebElement> listofCategoriesDropdown = ajioPage.getListOfCategoriesDropdownAttachedToSearchBox();
         String selectesOption = listofCategoriesDropdown.get(8).getText();
         listofCategoriesDropdown.get(8).click();
-        Assert.assertEquals(selectesOption,"Heels");
+        Assert.assertEquals(selectesOption,data.get("SearchProduct"));
     }
 
 
@@ -106,13 +115,13 @@ public class StepDefinition {
         List<WebElement> listofCategoriesDropdown = ajioPage.getListOfCategoriesDropdownAttachedToSearchBox();
         String selectesOption = listofCategoriesDropdown.get(4).getText();
         listofCategoriesDropdown.get(4).click();
-        Assert.assertEquals(selectesOption,"Kurti");
+        Assert.assertEquals(selectesOption,data.get("SearchProduct"));
     }
 
     @Then("product should be displayed on search page")
     public void product_should_be_displayed_on_search_page() {
         String searchInfo = ajioPage.getSearchInfo().getText();
-        Assert.assertEquals(searchInfo,"Kurti");
+        Assert.assertEquals(searchInfo,data.get("SearchProduct"));
     }
 
 
@@ -134,4 +143,6 @@ public class StepDefinition {
         Assert.assertEquals(searchInfo,searchData.get(arg0));
 
     }
+
+
 }
