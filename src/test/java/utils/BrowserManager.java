@@ -17,6 +17,6 @@ public class BrowserManager {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, SECONDS);
     }
 }

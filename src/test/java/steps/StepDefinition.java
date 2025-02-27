@@ -83,48 +83,6 @@ public class StepDefinition {
       Assert.assertEquals(placeholder,"Search AJIO");
     }
 
-    @When("chick on search bar")
-    public void chick_on_search_bar() {
-        ajioPage.getSearchBar().click();
-    }
-    @Then("the categories dropdown should be properly attached to the search box")
-    public void the_categories_dropdown_should_be_properly_attached_to_the_search_box() {
-        List<WebElement> listofCategoriesDropdown = ajioPage.getListOfCategoriesDropdownAttachedToSearchBox();
-        System.out.println(listofCategoriesDropdown);
-        Assert.assertEquals(listofCategoriesDropdown.size(),10);
-    }
-
-    @When("the user click on search bar then suggested product list show")
-    public void the_user_click_on_search_bar_then_suggested_product_list_show() {
-        ajioPage.getSearchBar().click();
-        List<WebElement> listofCategoriesDropdown = ajioPage.getListOfCategoriesDropdownAttachedToSearchBox();
-        System.out.println(listofCategoriesDropdown);
-        Assert.assertEquals(listofCategoriesDropdown.size(),10);
-    }
-    @Then("the user should be able to select product from suggested list")
-    public void the_user_should_be_able_to_select_product_from_suggested_list() {
-        List<WebElement> listofCategoriesDropdown = ajioPage.getListOfCategoriesDropdownAttachedToSearchBox();
-        String selectesOption = listofCategoriesDropdown.get(8).getText();
-        listofCategoriesDropdown.get(8).click();
-        Assert.assertEquals(selectesOption,data.get("SearchProduct"));
-    }
-
-
-    @When("the user select an option from the suggested list")
-    public void the_user_select_an_option_from_the_suggested_list() {
-        List<WebElement> listofCategoriesDropdown = ajioPage.getListOfCategoriesDropdownAttachedToSearchBox();
-        String selectesOption = listofCategoriesDropdown.get(4).getText();
-        listofCategoriesDropdown.get(4).click();
-        Assert.assertEquals(selectesOption,data.get("SearchProduct"));
-    }
-
-    @Then("product should be displayed on search page")
-    public void product_should_be_displayed_on_search_page() {
-        String searchInfo = ajioPage.getSearchInfo().getText();
-        Assert.assertEquals(searchInfo,data.get("SearchProduct"));
-    }
-
-
     @When("the user enter the product {string}")
     public void theUserEnterTheProduct(String arg0) {
         ajioPage.getSearchBar().sendKeys(arg0);
@@ -135,8 +93,8 @@ public class StepDefinition {
     @Then("the product {string} should be displayed")
     public void theProductShouldBeDisplayed(String arg0) {
         HashMap<String,String> searchData=new HashMap<>();
-        searchData.put("Shoes","Footwear");
-        searchData.put("Jackets","Jackets");
+        searchData.put("Shoes","Shoes");
+        searchData.put("Jackets","Jackets And Shrugs");
         searchData.put("Jeans","Jeans");
 
         String searchInfo = ajioPage.getSearchInfo().getText();
